@@ -19,6 +19,13 @@ We are using AWS DynamoDB as our primary data store. The table schema is as foll
 
 Note: each date could potentially be used as a primary key for a holiday item in a prospective Holidays table. This would enable us to provide more information about the holiday, such as holiday name etc which we could use to improve user experience in the future. It would also allow us to have a single source of truth for each holiday which could prevent errors when storing dates in the service holidays list.
 
+## Environment Variables
+
+Set the following environment variables:
+
+- `SERVICES_TABLE`: The name of your DynamoDB table.
+- `CONNECT_INSTANCE_ARN`: The ARN of your Connect instance.
+
 ## Setup Instructions
 - Clone the repository
 - Install dependencies

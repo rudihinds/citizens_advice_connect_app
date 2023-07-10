@@ -4,11 +4,14 @@ from aws_cdk import (
     aws_iam as iam,
     aws_lambda as _lambda,
 )
+import os
 
 class CitizensAdviceStack(core.Stack):
 
     def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
+
+        connect_arn = os.environ['CONNECT_INSTANCE_ARN']
 
         # The Services table
         services_table = ddb.Table(
@@ -61,5 +64,11 @@ class CitizensAdviceStack(core.Stack):
                 'SERVICES_TABLE': services_table.table_name,
                 'HOLIDAYS_TABLE': holidays_table.table_name
             }
+        )
+
+        lambda_function.add_permission(
+            'ConnectPermission',
+            principal=iam.ServicePrincipal('connect.amazonaws.com'),
+            source_arn=connect_arn,
         )
         
