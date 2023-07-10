@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-import aws_cdk as cdk
+from aws_cdk import core as cdk
 
 from citizens_advice.citizens_advice_stack import CitizensAdviceStack
 
