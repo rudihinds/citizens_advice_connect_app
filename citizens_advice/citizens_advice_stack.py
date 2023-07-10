@@ -34,7 +34,7 @@ class CitizensAdviceStack(core.Stack):
             # ]
         )
 
-        # The Lambda role permissions
+        # The Lambda role permissions (should be apdated to the minimum required permissions)
         policy = iam.PolicyStatement(
             actions=[
                 "dynamodb:PutItem",
