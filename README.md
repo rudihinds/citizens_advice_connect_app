@@ -1,8 +1,34 @@
+# Service Opening Hours App
+This is an application to determine whether a given service is open or closed for the current date.
 
-# Welcome to your CDK Python project!
+## Prerequisites
 
-This is a blank project for CDK development with Python.
+Ensure you have the following installed and configured with appropriate access:
+- AWS CLI
+- Python 3.6 or later
+- AWS CDK
 
+## Storage Definitions
+
+We are using AWS DynamoDB as our primary data store. The table schema is as follows:
+
+- Table name: `ServicesTable`
+- Primary key: `ServiceName` (String): The name of the service.
+- Attributes:
+  - `HolidayDates` (List of Strings): A list of holiday dates when the service is closed.
+
+Note: each date could potentially be used as a primary key for a holiday item in a prospective Holidays table. This would enable us to provide more information about the holiday, such as holiday name etc which we could use to improve user experience in the future. It would also allow us to have a single source of truth for each holiday which could prevent errors when storing dates in the service holidays list.
+
+## Setup Instructions
+- Clone the repository
+- Install dependencies
+    - pip install -r requirements.txt
+- Deploy the application with AWS CDK
+    - cdk deploy
+- seed the database
+    - python seed_data.py
+
+## CDK instructions
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 This project is set up like a standard Python project.  The initialization
